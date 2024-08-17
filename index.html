@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+  <title>Frontend Mentor | QR code component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    :root {
+      --white: hsl(0, 0%, 100%);
+      --slate300: hsl(212, 45%, 89%);
+      --slate500: hsl(216, 15%, 48%);
+      --slate900: hsl(218, 44%, 22%);
+    }
+
+    @keyframes shine {
+      0% {
+        background-repeat: no-repeat;
+        background-image: -webkit-linear-gradient(top, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 250, 0) 45%, rgba(250, 250, 250, 0.3) 48%, rgba(250, 250, 250, 0.7) 50%, rgba(250, 250, 250, 0.3) 52%, rgba(250, 250, 250, 0) 57%, rgba(250, 250, 250, 0) 100%);
+        background-position: -400px -400px;
+        background-size: 600px 600px;
+      }
+
+      100% {
+        background-repeat: no-repeat;
+        background-position: 250px 250px;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Outfit, 'sans-serif';
+    }
+
+    .main-wrapper {
+      height: 100vh; width: 100vw; margin: 0; padding: 0; box-sizing: border-box; display: flex; align-items: center; justify-content: center; background-color: var(--slate300);
+    }
+
+    .main-container {
+      width: 200px; background-color: var(--white); padding: 10px; border-radius: 16px; box-shadow: none; transition: 300ms ease-in-out; cursor: pointer; text-decoration: none; position: relative;
+    }
+
+    .main-container:hover {
+      box-shadow: 4px 4px 20px var(--slate900); scale: 1.02;
+    }
+
+    .qr-image-container {
+      position: relative;
+    }
+
+    .qr-image-container::before {
+      content: ''; display: block; height: 100%; width: 100%; position: absolute; z-index: 1; left: 0; top: 0; border-radius: 8px;
+    }
+
+    .qr-image-container img {
+      border-radius: 8px; height: 100%; width: 100%;
+    }
+
+    .qr-info-container {
+      display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; padding: 8px 0px;
+    }
+
+    .heading-text,
+    .subheading-text {
+      text-align: center;
+    }
+
+    .heading-text {
+      font-size: 15px; font-weight: 700; color: var(--slate900);
+    }
+
+    .subheading-text {
+      font-size: 12px; font-weight: 400; color: var(--slate500);
+    }
+
+    .attribution {
+      font-size: 11px; text-align: center; position: absolute; bottom: 10px; left: 0; right: 0;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main-wrapper">
+    <a class="main-container"
+      href="https://www.frontendmentor.io/learning-paths/getting-started-on-frontend-mentor-XJhRWRREZd/steps/66bb95c13c19191dc3c9fb10/challenge/start"
+      target="_blank">
+      <div class="qr-image-container">
+        <img src="./images/image-qr-code.png" alt="frontend mentor website">
+      </div>
+      <div class="qr-info-container">
+        <div class="heading-text">Improve your front-end skills by building projects</div>
+        <div class="subheading-text">Scan the QR code to visit Frontend Mentor and take your coding skills to the next
+          level</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://github.com/Git-DEmiGoD" target="_blank">Ujjwal Joshi</a>.
+  </div>
+
+  <script>
+    const mainContainer = document.querySelector('.main-container')
+    var styleElem = document.head.appendChild(document.createElement("style"));
+    const handleOnMouseOver = () => {
+      styleElem.innerHTML = ".qr-image-container:before {animation: shine 4s ease-in-out infinite;}";
+    }
+    const handleOnMouseOut = () => {
+      styleElem.innerHTML = "";
+    }
+    if (mainContainer) {
+      mainContainer.addEventListener('mouseover', handleOnMouseOver)
+      mainContainer.addEventListener('mouseout', handleOnMouseOut)
+    }
+  </script>
+</body>
+
+</html>
